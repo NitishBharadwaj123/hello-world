@@ -75,9 +75,10 @@ class newclass {
 	public static void remove(int weight,ArrayList<Integer> inputlist)
 	{
 		System.out.println("Do you want to remove any service");
-		Scanner scc= new Scanner(System.in);
-		boolean removeinput=scc.hasNextBoolean();
-		if(removeinput)
+        Scanner sc = new Scanner(System.in); 
+        String name = sc.nextLine(); 
+		//System.out.println(name);
+		if(name.startsWith("y")==true)
 		{
 			System.out.println("Enter the service you want to remove");
 			Scanner scanner= new Scanner(System.in);
@@ -85,23 +86,32 @@ class newclass {
 			inputlist.remove(new Integer(value));
 			System.out.println(inputlist);
 			function(weight,inputlist);
-			
-			
+		}
+		if(name.startsWith("n")==true)
+		{
+			function(weight,inputlist);
 		}
 		
 	}
 	
 }
 
-class mainclass extends newclass {
+interface newinterface
+{
+	void display();
 	
-	
+}
+
+class mainclass extends newclass implements newinterface {
 	
 	mainclass(int Amount, int GST, float finalamount) {
 		super(Amount, GST, finalamount);
 		// TODO Auto-generated constructor stub
 	}
-
+	public void display() 
+    { 
+		System.out.println("THIS IS YOUR FINAL BILL"+"\n"+"THANK YOU FOR CHOOSING US......WILL EXPECT YOU AGAIN");
+    }
 	public static void main(String[] args){
 		System.out.println("Choose your category vehicle");
 		System.out.println("1.100"+"\n"+"2.400"+"\n"+"3.500"+"\n"+"4.700"+"\n"+"5.1000");
@@ -111,6 +121,10 @@ class mainclass extends newclass {
 		//System.out.println(weight);
 		newclass obj = new newclass(0,18,0);
 		obj.servicesprovided(weight);
+		mainclass obj1= new mainclass(weight, weight, finalamount);
+		obj1.display();
+		
+		
 		
 		
 
